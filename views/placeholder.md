@@ -1,0 +1,1 @@
+will decide this structure after i've created more model and controller stuff
