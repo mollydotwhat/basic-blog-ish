@@ -29,9 +29,12 @@ router.get('/:id', async (req, res) => {
 // POST new post
 router.post('/', async (req, res) => {
     try {
-
+        const payload = await Post.create({
+            ...req.body,
+            user_id: req.session.user_id,
+        });
     } catch (err) {
-
+        res.status(500).json({ status: 'error', payload: err.message })
     }
 });
 
@@ -40,7 +43,7 @@ router.put('/:id', async (req, res) => {
     try {
 
     } catch (err) {
-
+        res.status(500).json({ status: 'error', payload: err.message })
     }
 })
 
@@ -50,7 +53,7 @@ router.delete('/:id', async (req, res) => {
     try {
 
     } catch (err) {
-        
+        res.status(500).json({ status: 'error', payload: err.message })
     }
 })
 
