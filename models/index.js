@@ -7,27 +7,32 @@ const Comment = require('./Comment');
 // define sequelize relationships
 
 User.hasMany(Post, {
-    foreignKey, //user id
-    onDelete
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
+
 Post.belongsTo(User, {
-    foreignKey //user id
+    foreignKey: 'post_id',
+    onDelete: 'SET NULL'
 });
 
 User.hasMany(Comment, {
-    foreignKey, //user id? or comment id??? confused now
-    onDelete
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE'
 });
 Comment.belongsTo(User, {
-    foreignKey //user id
+    foreignKey: 'comment_id',
+    onDelete: 'SET NULL'
 });
 
 Post.hasMany(Comment, {
-    foreignKey, //comment id
-    onDelete
+    foreignKey: 'post_id',
+    onDelete: 'CASCADE'
 });
+
 Comment.belongsTo(Post, {
-    foreignKey //post id
+    foreignKey: 'comment_id',
+    onDelete: 'SET NULL'
 });
 
 
